@@ -1,9 +1,11 @@
 import { IoLocationSharp } from "react-icons/io5";
 import { MdAttachMoney } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useFeaturedHouse from "../../hooks/useFeaturedHouse";
 
 
 const FeaturedHouses = () => {
+    const [featuredHouse] = useFeaturedHouse();
     return (
         <div className="max-w-7xl mx-auto mb-10">
             <div>
@@ -11,32 +13,19 @@ const FeaturedHouses = () => {
                 <p className="text-center text-gray-500 mb-10">Welcome to "Our Featured Houses" – a curated selection of exceptional homes. Discover modern luxury <br /> and convenience in every listing. Find your dream home with us today</p>
             </div>
             <div className="grid grid-cols-4 gap-10">
-            <div className="group overflow-hidden transition-transform duration-300 ease-out transform hover:-translate-y-1 cursor-pointer">
-                <img className="rounded-xl" src="/public/1.jpg" alt="" />
-                <h1 className="text-xl font-bold text-gray-700 mt-1">Family House</h1>
-                <p className="text-gray-600 flex items-center gap-1 text-sm"><IoLocationSharp></IoLocationSharp> Cumilla, Bangladesh</p>
-                <p className="font-semibold text-sm flex items-center gap-1"><MdAttachMoney></MdAttachMoney> $350 / Month</p>
+      {
+        featuredHouse.map(house => <div key={house._id}>
+        <div className="group overflow-hidden transition-transform duration-300 ease-out transform hover:-translate-y-1 cursor-pointer">
+            <div className="bg-gray-200 p-3 rounded-xl flex justify-center items-center">
+            <img className="rounded-xl h-52" src={house.img} alt="" />
             </div>
-            <div className="group overflow-hidden transition-transform duration-300 ease-out transform hover:-translate-y-1 cursor-pointer">
-                <img className="rounded-xl" src="/public/1.jpg" alt="" />
-                <h1 className="text-xl font-bold text-gray-700 mt-1">Family House</h1>
-                <p className="text-gray-600 flex items-center gap-1 text-sm"><IoLocationSharp></IoLocationSharp> Cumilla, Bangladesh</p>
-                <p className="font-semibold text-sm flex items-center gap-1"><MdAttachMoney></MdAttachMoney> $350 / Month</p>
-            </div>
-            <div className="group overflow-hidden transition-transform duration-300 ease-out transform hover:-translate-y-1 cursor-pointer">
-                <img className="rounded-xl" src="/public/1.jpg" alt="" />
-                <h1 className="text-xl font-bold text-gray-700 mt-1">Family House</h1>
-                <p className="text-gray-600 flex items-center gap-1 text-sm"><IoLocationSharp></IoLocationSharp> Cumilla, Bangladesh</p>
-                <p className="font-semibold text-sm flex items-center gap-1"><MdAttachMoney></MdAttachMoney> $350 / Month</p>
-            </div>
-            <div className="group overflow-hidden transition-transform duration-300 ease-out transform hover:-translate-y-1 cursor-pointer">
-                <img className="rounded-xl" src="/public/1.jpg" alt="" />
-                <h1 className="text-xl font-bold text-gray-700 mt-1">Family House</h1>
-                <p className="text-gray-600 flex items-center gap-1 text-sm"><IoLocationSharp></IoLocationSharp> Cumilla, Bangladesh</p>
-                <p className="font-semibold text-sm flex items-center gap-1"><MdAttachMoney></MdAttachMoney> $350 / Month</p>
-            </div>
-            
+            <h1 className="text-xl font-bold text-gray-700 mt-1">{house.title}</h1>
+            <p className="text-gray-600 flex items-center gap-1 text-sm"><IoLocationSharp></IoLocationSharp> {house.city}</p>
+            <p className="font-semibold text-sm flex items-center gap-1"><MdAttachMoney></MdAttachMoney> {house.price} / Month</p>
         </div>
+    </div>)
+      }
+      </div>
 
         <div className="flex justify-center items-center mt-10">
         <Link to={"/allHouses"} className="font-semibold transition duration-300 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded text-white">View All Houses</Link>
