@@ -50,7 +50,7 @@ const Hero = () => {
             </div>
 
             <div>
-                <Link className="font-semibold transition duration-300 bg-blue-500 px-4 py-2 rounded text-white">Search</Link>
+                <Link className="font-semibold transition duration-300 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded text-white">Search</Link>
             </div>
         </div>
         </div>
