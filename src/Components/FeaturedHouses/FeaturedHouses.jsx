@@ -14,7 +14,7 @@ const FeaturedHouses = () => {
             </div>
             <div className="grid grid-cols-4 gap-10">
       {
-        featuredHouse.map(house => <div key={house._id}>
+        featuredHouse.map(house => <Link to={`/featuredHouseDetails/${house._id}`} key={house._id}>
         <div className="group overflow-hidden transition-transform duration-300 ease-out transform hover:-translate-y-1 cursor-pointer">
             <div className="bg-gray-200 p-3 rounded-xl flex justify-center items-center">
             <img className="rounded-xl h-52" src={house.img} alt="" />
@@ -23,7 +23,7 @@ const FeaturedHouses = () => {
             <p className="text-gray-600 flex items-center gap-1 text-sm"><IoLocationSharp></IoLocationSharp> {house.city}</p>
             <p className="font-semibold text-sm flex items-center gap-1"><MdAttachMoney></MdAttachMoney> {house.price} / Month</p>
         </div>
-    </div>)
+    </Link>)
       }
       </div>
 

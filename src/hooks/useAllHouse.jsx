@@ -3,12 +3,12 @@ import useAxiosPublic from "./useAxiosPublic";
 
 
 
-const useAllHouse = () => {
+const useAllHouse = (search, sortByCity) => {
     const axiosPublic = useAxiosPublic();
     const {refetch, isPending:isLoading, data: allHouse = []} = useQuery({
-        queryKey: ['allHouse'],
+        queryKey: ['allHouse', search, sortByCity],
         queryFn: async () => {
-            const res = await axiosPublic.get('/allHouse');
+            const res = await axiosPublic.get(`/allHouse?search=${search}`);
             return res.data;
         }
     })
